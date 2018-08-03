@@ -3,7 +3,7 @@ import Link from 'gatsby-link'
 
 export default function Template({ data }) {
   const post = data.markdownRemark
-
+    console.log(post);
   return (
     <div>
       <Link to="/blog">Go Back</Link>

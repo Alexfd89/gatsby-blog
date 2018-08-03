@@ -13,6 +13,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
             html
             id
             frontmatter {
+              templateKey
               path
               title
               date
@@ -30,7 +31,9 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     res.data.allMarkdownRemark.edges.forEach(({ node }) => {
       createPage({
         path: node.frontmatter.path,
-        component: postTemplate,
+        component: path.resolve(
+            `src/templates/${String(node.frontmatter.templateKey)}.js`
+        )
       })
     })
   })
