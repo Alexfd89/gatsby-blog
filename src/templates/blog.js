@@ -26,6 +26,7 @@ export const postQuery = graphql`
         slug
       }
       frontmatter {
+        templateKey
         path
         title
         author
