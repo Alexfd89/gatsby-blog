@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-path: "/post-one"
+path: "post-one"
 date: "2018-04-08"
 title: "My First Gatsby Post"
 author: "Alex Fadeev"
