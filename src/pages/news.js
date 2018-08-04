@@ -1,16 +1,12 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-const BlogPage = ({data}) => (
+const NewsPage = ({data}) => (
   <div>
     <h1 className='mb-5'>Latest Posts</h1>
     {data.allMarkdownRemark.edges.map(post => (
         <div className='mt-5' key={post.node.id}>
             <h3>{post.node.frontmatter.title}</h3>
-            <small>Posted by {post.node.frontmatter.author} on {post.node.frontmatter.date}</small>
-            <br />
-            <br />
-            <hr />
             <Link to={`/${post.node.frontmatter.templateKey}/${post.node.frontmatter.title}`}>Read more</Link>
         </div>
     ))}
@@ -18,9 +14,9 @@ const BlogPage = ({data}) => (
 )
 
 export const pageQuery = graphql`
-    query BlogIndexQuery {
+    query NewsIndexQuery {
         allMarkdownRemark(
-            filter: { frontmatter: { templateKey: { eq: "blog" } }}
+            filter: { frontmatter: { templateKey: { eq: "news" } }}
         ) {
             edges {
                 node {
@@ -36,5 +32,5 @@ export const pageQuery = graphql`
         }
     }
 `
-export default BlogPage
+export default NewsPage
 

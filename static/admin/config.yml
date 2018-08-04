@@ -16,3 +16,14 @@ collections:
       - { name: title, label: Title }
       - { name: author, label: Author }
       - { name: body, label: Body, widget: markdown }
+
+  - name: news
+    label: News
+    folder: src/pages/news
+    create: true
+    fields:
+      - { name: "templateKey", label: "Template Key", widget: "hidden", default: "news" }
+      - { name: date, label: Date, widget: date }
+      - { name: title, label: Title }
+      - { name: author, label: Author, widget: "hidden" }
+      - { name: body, label: Body, widget: markdown }
