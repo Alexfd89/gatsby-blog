@@ -2,8 +2,7 @@ backend:
   name: github
   repo: Alexfd89/gatsby-blog
 
-media_folder: static/assets
-public_folder: assets
+media_folder: static/img
 
 collections:
   - name: blog
