@@ -3,6 +3,7 @@ backend:
   repo: Alexfd89/gatsby-blog
 
 media_folder: static/img
+public_folder: "img"
 
 collections:
   - name: blog
