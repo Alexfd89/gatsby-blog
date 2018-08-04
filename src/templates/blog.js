@@ -22,12 +22,8 @@ export const postQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
-      fields {
-        slug
-      }
       frontmatter {
         templateKey
-        path
         title
         author
         date

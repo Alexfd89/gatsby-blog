@@ -11,7 +11,7 @@ const BlogPage = ({data}) => (
             <br />
             <br />
             <hr />
-            <Link to={`/${post.node.frontmatter.templateKey}${post.node.fields.slug}`}>Read more</Link>
+            <Link to={`/${post.node.frontmatter.templateKey}/${post.node.frontmatter.title}`}>Read more</Link>
         </div>
     ))}
   </div>
@@ -23,12 +23,8 @@ export const pageQuery = graphql`
             edges {
                 node {
                     id
-                    fields {
-                        slug
-                    }
                     frontmatter {
                         templateKey
-                        path
                         title
                         date
                         author

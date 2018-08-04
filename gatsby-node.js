@@ -11,12 +11,8 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         edges {
           node {
             id
-            fields {
-              slug
-            }
             frontmatter {
                 templateKey
-                path
                 title
                 date
                 author
@@ -36,7 +32,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     posts.forEach(edge => {
       const id = edge.node.id
       createPage({
-        path: `/${edge.node.frontmatter.templateKey}${edge.node.fields.slug}`,
+        path: `/${edge.node.frontmatter.templateKey}/${edge.node.frontmatter.title}`,
         component: path.resolve(
           `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
         ),
@@ -49,95 +45,3 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     })
   })
 }
-
-
-
-exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
-  const { createNodeField } = boundActionCreators
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const path = require('path')
-
-// exports.createPages = ({ boundActionCreators, graphql }) => {
-//   const { createPage } = boundActionCreators
-
-//   const postTemplate = path.resolve('src/templates/blog-post.js')
-
-//   return graphql(`
-//     {
-//       allMarkdownRemark {
-//         edges {
-//           node {
-//             html
-//             id
-//             frontmatter {
-//               templateKey
-//               path
-//               title
-//               date
-//               author
-//             }
-//           }
-//         }
-//       }
-//     }
-//   `).then(res => {
-//     if (res.errors) {
-//       return Promise.reject(res.errors)
-//     }
-
-//     res.data.allMarkdownRemark.edges.forEach(({ node }) => {
-//       createPage({
-//         path: node.frontmatter.path,
-//         component: path.resolve(
-//             `src/templates/${String(node.frontmatter.templateKey)}.js`
-//         )
-//       })
-//     })
-//   })
-// }
